@@ -1,0 +1,21 @@
+{
+  "SysId": {
+    "Analysis Type": "Drivetrain",
+    "Analyzer": {
+      "window": {
+        "visible": false
+      }
+    },
+    "AnalyzerJSONLocation": "",
+    "NetworkTables Settings": {
+      "serverTeam": "5010"
+    },
+    "Program Log": {
+      "window": {
+        "visible": false
+      }
+    },
+    "mode": "Client",
+    "serverTeam": "5010"
+  }
+}
