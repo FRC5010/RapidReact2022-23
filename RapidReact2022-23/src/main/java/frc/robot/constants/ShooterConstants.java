@@ -91,12 +91,11 @@ public class ShooterConstants {
     public static double kA = kAC / 60 / 1 / (12 - kS);
 
     //Defaults
-    public static double defaultFlyWheelRPM = 1000;
+    public static double defaultFlyWheelRPM = 1600; //1000
     public static double lowRPM = 1150;
     public static double indexerPow = 1;
     public static double changeSetPoint = 25;
-    public static double shotAdjustment = -175
-    ;
+    public static double shotAdjustment = -50;
 
     public static class FeederConstants{
         public static double feederWheelPower = 1;

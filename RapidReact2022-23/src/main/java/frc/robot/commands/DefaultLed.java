@@ -68,9 +68,9 @@ public class DefaultLed extends CommandBase {
         if(percent < 0.97){
           ledSubsystem.setSolidColorPercent(255, 20, 0, Math.pow(percent, 3));
         } else if (shooterSubsystem.getReadyToShoot()){
-          ledSubsystem.setSolidColor(255, 0, 255);
+          ledSubsystem.setSolidColor(185, 0, 255);
         } else {
-          ledSubsystem.setSolidColor(255, 0, 0);
+          ledSubsystem.setSolidColor(255, 255, 255);
         }
         break; 
       default: 
