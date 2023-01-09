@@ -14,7 +14,6 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
-import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.SerialPort.Port;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInLayouts;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
@@ -62,7 +61,7 @@ public class Pose extends SubsystemBase {
         this.rightEncoder = rightEncoder;
         gyro.reset();
         
-        odometry = new DifferentialDriveOdometry(Rotation2d.fromDegrees(getHeading()));
+        odometry = new DifferentialDriveOdometry(Rotation2d.fromDegrees(getHeading()), leftEncoder.getPosition(), rightEncoder.getPosition());
 
         resetEncoders();
         ShuffleboardLayout poseLayout = Shuffleboard.getTab(ControlConstants.SBTabDiagnostics).getLayout("Pose",
@@ -131,7 +130,7 @@ public class Pose extends SubsystemBase {
      */
     public void resetOdometry(Pose2d pose) {//Rotation2d.fromDegrees(getHeading())
         resetEncoders();
-        odometry.resetPosition(pose, Rotation2d.fromDegrees(getHeading()));
+        odometry.resetPosition(Rotation2d.fromDegrees(getHeading()), leftEncoder.getPosition(), rightEncoder.getPosition(), odometry.getPoseMeters());
     }
 
     /**

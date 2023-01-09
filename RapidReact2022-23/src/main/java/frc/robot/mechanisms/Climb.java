@@ -103,14 +103,13 @@ public class Climb {
 
         climbTime = new JoystickButton(driver, ControlConstants.climbTime);
     
-        climbTime.whileHeld(new SequentialCommandGroup(
+        climbTime.whileTrue(new SequentialCommandGroup(
                 //new CalibrateHood(transport.getShooterSubsystem()),
                 new ParallelCommandGroup(
                     new DefaultClimb(climbSubsystem, operator, transport)),
                     new CalibrateHood(transport.getShooterSubsystem()),
                     new SpinTurret(transport.getTurretSubsystem(), transport.getShooterVision(), false)
-                ),
-            true);
+                ));
             //climbTogglePistons = new JoystickButton(operator, ControlConstants.toggleClimb);
             climbTogglePistons = new Trigger(() -> (Math.abs(operator.getRawAxis(ControlConstants.toggleClimb)) > 0));
             climbTogglePistons.whenActive(new InstantCommand(()->climbSubsystem.toggleClimbArm(), climbSubsystem));

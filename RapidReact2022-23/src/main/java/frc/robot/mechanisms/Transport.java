@@ -202,11 +202,10 @@ public class Transport {
 
         aimAndShoot = new JoystickButton(operator, ControlConstants.launchButton);
         //switched out DefaultShoot for AimAndShoot
-        aimAndShoot.whileHeld(
+        aimAndShoot.whileTrue(
             new ParallelDeadlineGroup(
                 new AimAndShoot(shooterSubsystem, upperIndexerSubsystem, indexerSubsystem,shooterVision),
-                new SnapshotCmd(shooterVision)),
-            false);
+                new SnapshotCmd(shooterVision)));
 
         defaultShoot = new JoystickButton(operator, ControlConstants.defaultShoot);
         defaultShoot.whileHeld(new DefaultShoot(shooterSubsystem, upperIndexerSubsystem, indexerSubsystem));
@@ -235,16 +234,16 @@ public class Transport {
         indexerTrigger.whileActiveOnce(new RunIndexer(upperIndexerSubsystem, indexerSubsystem, operator));
 
         fenderShot = new JoystickButton(operator, ControlConstants.fenderButton);
-        fenderShot.whileHeld(new FenderShot(shooterSubsystem, upperIndexerSubsystem, indexerSubsystem,true), false);
+        fenderShot.whileTrue(new FenderShot(shooterSubsystem, upperIndexerSubsystem, indexerSubsystem,true));
 
         
         fenderShot2 = new JoystickButton(operator, ControlConstants.fender2Button);
-        fenderShot2.whileHeld(new FenderShot(shooterSubsystem, upperIndexerSubsystem, indexerSubsystem,false), false);
+        fenderShot2.whileTrue(new FenderShot(shooterSubsystem, upperIndexerSubsystem, indexerSubsystem,false));
 
         //lockAndLoad = new JoystickButton(operator, ControlConstants.lockAndLoadButton);
         //lockAndLoad.whenPressed(new LockAndLoad(upperIndexerSubsystem, indexerSubsystem, shooterSubsystem, shooterVision), true);
         lockAndLoad = new Trigger(() -> (Math.abs(operator.getRawAxis(ControlConstants.lockAndLoadButton)) > 0));
-        lockAndLoad.whenActive(new LockAndLoad(upperIndexerSubsystem, indexerSubsystem, shooterSubsystem, shooterVision), true);
+        lockAndLoad.whenActive(new LockAndLoad(upperIndexerSubsystem, indexerSubsystem, shooterSubsystem, shooterVision));
         
 
         intakeTrigger = new Trigger(() -> (Math.abs(driver.getRawAxis(ControlConstants.intakeAxis) - driver.getRawAxis(ControlConstants.outtakeAxis)) > 0));
