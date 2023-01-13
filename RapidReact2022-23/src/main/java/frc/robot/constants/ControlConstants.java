@@ -116,6 +116,8 @@ public class ControlConstants {
     //public static int leftClimbArmUp = ButtonNums.Y_BUTTON.ordinal();
     public static int upperFender = ButtonNums.LEFT_BUMPER.ordinal(); // unused
     public static int driveYEET = ButtonNums.LEFT_BUMPER.ordinal();
+
+    public static int autoBalance = ButtonNums.Y_BUTTON.ordinal(); // Auto Balance test
     
     //public static int toggleIntake = ButtonNums.RIGHT_BUMPER.ordinal();
     //automatically raises and lowers intake whenever we intake or outtake
@@ -167,6 +169,8 @@ public class ControlConstants {
 
     //test button for disable ball reject
     
+    public static int offBalanceThreshold = 10; 
+    public static int onBalanceThreshold = 5; 
 
     // Shuffleboard constants
     public static String SBTabDriverDisplay = "Driver Display";

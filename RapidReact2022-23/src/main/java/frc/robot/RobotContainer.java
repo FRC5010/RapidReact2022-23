@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.FRC5010.Controller;
+import frc.robot.commands.AutoBalance;
 import frc.robot.commands.DefaultLed;
 import frc.robot.commands.LedBlink;
 import frc.robot.commands.LedColor;
@@ -53,6 +54,7 @@ import frc.robot.mechanisms.Climb;
 import frc.robot.mechanisms.Drive;
 import frc.robot.mechanisms.Transport;
 import frc.robot.subsystems.CameraSubsystem;
+import frc.robot.subsystems.DriveTrainMain;
 import frc.robot.subsystems.LedSubsystem;
 import frc.robot.subsystems.vision.VisionLimeLightH2;
 
@@ -82,6 +84,7 @@ public class RobotContainer {
 
   private CameraSubsystem cameraSubsystem;
   private LedSubsystem ledSubsystem;
+  private DriveTrainMain driveTrainMain; 
 
   private Drive drive;
 
@@ -106,6 +109,7 @@ public class RobotContainer {
 
     //cameraSubsystem = new CameraSubsystem();
     ledSubsystem = new LedSubsystem(0, 62);
+    
 
     /*
      * command.addOption("LowerCargoToHub", new LowerCargoToHub());
@@ -217,7 +221,8 @@ public class RobotContainer {
 
     // takeSnapshot = new JoystickButton(driver, ControlConstants.takeSnapshot);
 
-    driver2.createBButton().whileHeld(new SnapshotCmd(shooterVision));
+    driver2.createBButton().whileTrue(new SnapshotCmd(shooterVision));
+
 
   }
 

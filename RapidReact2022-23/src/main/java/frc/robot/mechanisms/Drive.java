@@ -29,6 +29,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.Robot;
 import frc.robot.FRC5010.Controller;
+import frc.robot.commands.AutoBalance;
 import frc.robot.commands.DriveTrainYEET;
 import frc.robot.commands.Driving;
 import frc.robot.commands.RamseteFollower;
@@ -105,7 +106,11 @@ public class Drive {
         () -> DriveConstants.steerFactor = Math.max(0, DriveConstants.steerFactor - DriveConstants.drivingAdjustment)));
 
     // driveYEET = new JoystickButton(driver, ControlConstants.driveYEET);
-  driver2.createLeftBumper().whileHeld(new DriveTrainYEET(driveTrain, driver));
+  driver2.createLeftBumper().whileTrue(new DriveTrainYEET(driveTrain, driver));
+
+    
+  // driver2.createYButton().whileTrue(new AutoBalance(driver2, getDriveTrainMain()));
+
 
   }
 
